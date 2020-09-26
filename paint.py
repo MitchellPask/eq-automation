@@ -4,7 +4,7 @@ draw_on = False # Check for left mouse button being pressed
 last_pos = (0, 0)
 black = (0, 0, 0)
 white = (255,255,255)
-radius = 5 # Size of brush
+radius = 20 # Size of brush
 CWD = os.getcwd() # Currect working directory
 IMG_DIR = CWD + '/saved_images'
 
@@ -13,8 +13,8 @@ if not os.path.exists(CWD + '/saved_images'):
     os.makedirs(CWD + '/saved_images')
 
 # Open and fill a new pyGame paint screen
-screen = pygame.display.set_mode((800,600))
-screen.fill(white)
+screen = pygame.display.set_mode((800,800))
+screen.fill(black)
 
 # Controls list in terminal
 print("\n===== Controls =====")
@@ -48,7 +48,7 @@ try:
                 raise StopIteration
         # Toggle drawing on if left mouse button pressed
         if e.type == pygame.MOUSEBUTTONDOWN:
-            color = (black)
+            color = (white)
             pygame.draw.circle(screen, color, e.pos, radius)
             draw_on = True
         # Toggle drawing off if left mouse button released
@@ -63,7 +63,7 @@ try:
         # Reset screen if spacebar is pressed
         if e.type == pygame.KEYDOWN:
             if e.key == pygame.K_SPACE:
-                screen.fill(white)
+                screen.fill(black)
         # Save current drawing to saved_images folder if S key is pressed
         if e.type == pygame.KEYDOWN:
             if e.key == pygame.K_s:
